@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{#Erstellt eine neue Webseite auf die verwiesen werden kann.#}
+
+{% block title %}Registrierung erfolgreich!{% endblock %}
+
+{% block body %}
+    <h2>Registrierung erfolgreich!</h2>
+    <h3>Herzlich Willkommen {{ username }}!</h3>
+{#    Erstellt einen Text mit Link an entsprechender Stelle. Weiterleitung erfolgt mit der path() Funktion.#}
+    <h3>Du kannst dich jetzt <a href="{{ path('app_login') }}">einloggen</a>.</h3>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Pokemon{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+
+        td {
+            border: 1px solid black;
+            margin: 0
+        }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Hello {{ controller_name }}! ✅</h1>
+        {% for label, messages in app.flashes(['success', 'errors']) %}
+            {% for message in messages %}
+                <div class="flash-{{ label }} alert alert-{{ label == 'success' ? 'success' : 'danger' }}"
+                     style="color: {% if label == 'success' %} green {% else %} red{% endif %};">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <table style="width: 100%">
+            <tr>
+                <td>Pokedexnummer</td>
+                <td>Name</td>
+                <td>Typ</td>
+                <td>Bearbeiten</td>
+            </tr>
+            {% for pokemon in allPkmn %}
+                <tr>
+                    <td>{{ pokemon.pokedexId }}</td>
+                    <td> {{ pokemon.name }}</td>
+                    <td>
+                        {% for type in pokemon.getPokemonType %}
+                            {{ type.typeName }}<br/>
+                        {% endfor %}
+                    </td>
+                    <td><a href="/admin/pokemon/{{ pokemon.pokedexId }}" target="_blank">Bearbeiten</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        This allows you to view and edit Pokemon Entries from the local Database (see above)!
+
+        <ul>
+            <li><a href="{{ path('app_admin') }}">Back to Admin Dashboard</a></li>
+        </ul>
+    </div>
+{% endblock %}

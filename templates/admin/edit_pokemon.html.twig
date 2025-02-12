@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pokemon editieren{% endblock %}
+
+{% block body %}
+    <h1>
+        Pokemon editieren
+    </h1>
+
+
+{{ form_start(pokemonForm) }}
+    {{ form_label(pokemonForm.pokedexId) }}
+    {{ form_widget(pokemonForm.pokedexId, {'attr': {'value': pokemon.pokedexId }}) }}
+
+    {{ form_label(pokemonForm.name) }}
+    {{ form_widget(pokemonForm.name, {'attr': {'value': pokemon.name }}) }} <br/>
+
+    {{ form_label(pokemonForm.pokemonType) }}
+    {{ form_widget(pokemonForm.pokemonType) }}
+
+    {{ form_label(pokemonForm.height) }}
+    {{ form_widget(pokemonForm.height, {'attr': {'value': pokemon.height }}) }}
+    {{ form_row(pokemonForm.agreeTerms) }}
+
+    {{ form_widget(pokemonForm.absenden) }}
+    {{ form_end(pokemonForm) }}
+
+{% endblock %}

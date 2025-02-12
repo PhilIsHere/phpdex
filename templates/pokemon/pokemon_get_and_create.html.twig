@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pokemon anlegen{% endblock %}
+
+{% block body %}
+    <style>
+        td {
+            border: 1px solid black;
+            margin: 0
+        }
+    </style>
+    <h1>Bereits im Pokédex:</h1>
+    <table style="with: 100%">
+        <tr>
+            <td>Pokedexnummer</td>
+            <td>Name</td>
+            <td>Typ</td>
+        </tr>
+        {% for pokemon in allPkmn %}
+            <tr>
+                <td>{{ pokemon.pokedexId }}</td>
+                <td> {{ pokemon.name }}</td>
+                <td>
+                    {% for type in pokemon.getPokemonType %}
+                        {{ type.typeName | trans }}<br/>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h1>Pokemon anlegen</h1>
+    {{ form_start(pokemonForm) }}
+    {{ form_row(pokemonForm.pokedexId) }}
+    {{ form_row(pokemonForm.name) }}
+    {{ form_row(pokemonForm.height) }}
+    {{ form_row(pokemonForm.pokemonType) }}
+    {{ form_row(pokemonForm.imageFile, {attr: {
+        'placeholder': 'Please select an image of the pokemon',
+        'class': 'form-control'
+    }}) }}
+    {{ form_errors(pokemonForm) }}
+    {{ form_row(pokemonForm.absenden) }}
+    {{ form_end(pokemonForm) }}
+
+    {% for label, messages in app.flashes(['success', 'errors']) %}
+        {% for message in messages %}
+            <div class="flash-{{ label }} alert alert-{{ label == 'success' ? 'success' : 'danger' }}"
+                 style="color: {% if label == 'success' %} green {% else %} red{% endif %};">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+
+{% endblock %}

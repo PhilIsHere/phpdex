@@ -1,0 +1,67 @@
+<style>
+    h1,
+    p,
+    a {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 2.8em;
+        padding: 10px 0;
+        font-weight: 800;
+    }
+
+    p {
+        font-size: 1.1em;
+        font-weight: 100;
+        letter-spacing: 5px;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        background: repeating-linear-gradient(45deg, #252A34 2%, #FF2E63 2%, #252A34 4%, #FF2E63 4%);
+        color: white;
+    }
+
+    .btn-bgstroke {
+        background: repeating-linear-gradient(135deg, #252A34 50%, #FF2E63 50%, #252A34 100%, #FF2E63 100%);
+        font-size: 20px;
+        color: white;
+        display: inline-block;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 300;
+        margin-top: 30px;
+    }
+
+    .btn-bgstroke:hover {
+        background-color: white;
+        color: #33cccc;
+    }
+
+    #logout-btn {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+</style>
+
+{% block body %}
+    <section class="header">
+        <h1>Pokesite</h1>
+        <p>Gotta log 'em all!</p>
+        <div class="d-flex">
+            {% if app.user %}
+                <a class="btn-bgstroke" id="logout-btn" href="{{ path('app_logout') }}">Logout</a>
+                <a class="btn-bgstroke" href="pokemon">Pokemon anlegen</a>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

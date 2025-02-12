@@ -1,0 +1,12 @@
+@import "bootstrap";
+@import "inputfelder.css";
+@import "tabellen.css";
+@import "page.css";
+
+:root {
+    font-size: 14px;
+}
+
+body {
+    background-color: lightgray;
+}

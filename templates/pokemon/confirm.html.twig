@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pokemon Angelegt!{% endblock %}
+
+{% block body %}
+    <div><h1>Herzlichen Glückwunsch! Deine Informationen zu {{ name }} wurden hinzugefügt!</h1></div>
+    <table class="table table-bordered">
+        <thead>
+        <tr class="align-middle">
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Typ</th>
+            <th scope="col">Größe</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="align-middle">
+            <th scope="row">{{ pokedexId }}</th>
+            <td><img src="{{ asset('images/pokemon/' ~image) }}" class="img-fluid" alt="Ein Bild"/> {{ name }}</td>
+            <td>
+                {% for type in type %}
+                    {{ type.typeName | trans }}<br/>
+                {% endfor %}
+            </td>
+            <td>{{ height }}cm</td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <a href="{{ path('get_pokemon') }}">Zurück zur Übersicht</a>
+    </div>
+
+    {% for label, messages in app.flashes(['success', 'errors']) %}
+        {% for message in messages %}
+            <div class="flash-{{ label }} alert alert-{{ label == 'success' ? 'success' : 'danger' }}"
+                 style="color: {% if label == 'success' %} green {% else %} red{% endif %};">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+
+{% endblock %}

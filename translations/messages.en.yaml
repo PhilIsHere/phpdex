@@ -1,0 +1,19 @@
+pokemon.types.translation:
+  normal: Normal
+  fire: Feuer
+  water: Wasser
+  electric: Elektro
+  grass: Pflanze
+  ice: Eis
+  fighting: Kampf
+  poison: Gift
+  ground: Boden
+  flying: Flug
+  psychic: Psycho
+  bug: Käfer
+  rock: Stein
+  ghost: Geist
+  dragon: Drache
+  dark: Dunkel
+  steel: Stahl
+  fairy: Fee
